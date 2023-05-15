@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+  gap: 16px;
+}
+.title {
+  font-size: 24px;
+}
+
+
+
+

@@ -1,0 +1,19 @@
+.addContact {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-inverse);
+  border-bottom: 2px solid var(--dark);
+}
+
+.addBtn {
+  display: block;
+  background: transparent;
+  border: 2px solid var(--bg);
+  color: var(--white);
+  padding: 10px;
+  width: 300px;
+  font-size: 18px;
+  border-radius: 10px;
+}

@@ -1,0 +1,15 @@
+.contactItem {
+  background: transparent;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 100px;
+}
+
+.tel {
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 400;
+}

@@ -18,8 +18,9 @@ module.exports = {
     return prompter
       .prompt(questions)
       .then((answers) => {
-        const { component_name, dir } = answers
-        const path = `${dir ? `${dir}/` : ''}${component_name}`;
+        console.log('answers: ', answers);
+        const { page_name, dir } = answers
+        const path = `${dir ? `${dir}/` : ''}${page_name}`;
         const absPath = `./src/pages/${path}`;
         return { ...answers, path, absPath };
       })

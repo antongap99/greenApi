@@ -1,20 +1,32 @@
 import { useState } from 'react';
-import { Login } from './components/login/Login';
 import { Route, Routes } from 'react-router-dom';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
+import './app.css';
+import { LoginPage } from './pages/LoginPage/LoginPage';
+import {  MainPage } from './pages/MainPage/MainPage';
+import { useAppSelector } from './redux/redux-hooks/hooks';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [path, setPath] = useState('/')
 
   return (
     <>
-      <div>
         <Routes>
           <Route
             path='/'
             element={
               <>
-                <Login />
+                <LoginPage />
+              </>
+            }
+          >
+          </Route>
+          <Route
+            path='auth'
+            element={
+              <>
+                <MainPage />
               </>
             }
           >
@@ -28,7 +40,6 @@ function App() {
             }
           ></Route>
         </Routes>
-      </div>
     </>
   )
 }

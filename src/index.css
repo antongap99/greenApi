@@ -5,6 +5,30 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --white:  #ffffff;
+  --primary: #4C864C;
+  --bg: #00a884;
+  --bg-main: #202c33;
+  --bg-inverse: #2A3942;
+  --dark: #1d251f;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
 }
 
 a {
@@ -16,11 +40,23 @@ a:hover {
 
 body {
   margin: 0;
+  height: 100%;
 }
 
 h1 {
-  font-size: 3.2em;
   line-height: 1.1;
+}
+
+#root {
+  height: 100%;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+button {
+  cursor: pointer;
 }
 
 
