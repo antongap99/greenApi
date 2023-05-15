@@ -1,9 +1,13 @@
-.error {
+.header {
+  max-height: 70px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--bg-main);
-  height: 100vh;
+}
+
+.title {
   color: var(--white);
-  gap: 30px;
+  font-size: 24px;
 }

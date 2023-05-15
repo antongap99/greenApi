@@ -5,6 +5,7 @@
   height: 48px;
   border: 1px solid var(--bg);
   border-radius: 24px;
+  cursor: pointer;
 }
 
 .icons {

@@ -1,10 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import  authReducer  from "./authSlice/reducer";
+import  contactsReducer  from "./contactSlice/contactReducer";
+import  messagesReducer  from "./messagesSlice/messagesReducer";
 
 
 export const store  = configureStore({
   reducer: {
-    auth: authReducer
+    auth: authReducer,
+    contacts: contactsReducer,
+    messages: messagesReducer,
   },
   middleware: (getDefualtMiddleware) => getDefualtMiddleware()
 });

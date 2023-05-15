@@ -2,4 +2,5 @@
   height: 100%;
   background-color: var(--bg-inverse);
   display: flex;
+  flex-direction: column;
 }

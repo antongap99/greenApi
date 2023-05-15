@@ -1,12 +1,8 @@
-import { FC } from 'react';
 import style from './LoginPage.module.css';
 import { Login } from '../../components/login/Login';
 
-interface Props {
-  children?: FC;
-}
 
-export const LoginPage = (props:Props) => {
+export const LoginPage = () => {
   return (
     <div className={style.wrapper}>
       <Login/>

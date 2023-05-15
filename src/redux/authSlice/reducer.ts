@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { IAuthAction } from "../interfaces/interfaces";
 
 interface initialState {
   loading: boolean,
@@ -7,13 +8,6 @@ interface initialState {
   error: string,
 }
 
-interface Action{
-  type: string,
-  payload: {
-    data?:  Record<string, unknown> | string,
-    error: string
-  }
-}
 
 export const initialState = {
   data: {},
@@ -32,7 +26,7 @@ const authSlice = createSlice({
       state.status = 'success',
       state.access = true
     },
-    auth_error: (state, action: Action) => {
+    auth_error: (state, action: IAuthAction) => {
       state.error = action.payload.error,
       state.status = 'reject',
       state.access = false

@@ -1,25 +1,32 @@
+import { MouseEventHandler } from "react";
 import style from "./Button.module.css";
 import cn from "classnames";
+import { MouseEvent } from "react";
 
-export enum ButtonTypes {
-  Primary = "primary",
-  Defualt = "defualt",
-}
+
+export type ButtonType = "submit" | "button" | "reset" | undefined
 
 interface Props {
-  type: ButtonTypes;
+  type: ButtonType,
+  text:string,
+  handle?: ()=> void
 }
 
-export const Button = ({ type }: Props) => {
+export const Button = ({type, text, handle }: Props) => {
+
+  // const onClickHandle: MouseEventHandler  = (e) => {
+  //   handle && handle(e)
+  // }
+
   return (
     <button
-      type="submit"
+      type={type}
       className={cn(style.submit, {
-        primary: type === "primary",
-        defualt: type === "defualt",
+        primary: type === "submit",
+        defualt: type !== "submit",
       })}
     >
-      Войти
+      {text}
     </button>
   );
 };

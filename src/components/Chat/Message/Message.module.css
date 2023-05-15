@@ -1,0 +1,27 @@
+.message {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg);
+  max-width: 600px;
+  height: auto;
+  min-width: 200px;
+  padding: 5px 10px;
+  border-radius: 10px 10px 0 10px;
+  gap: 10px;
+  color: var(--white);
+}
+
+.date {
+  min-width: 110px;
+  align-self: flex-end;
+  font-size: 10px;
+}
+.text {
+  height: auto;
+  word-break: break-all;
+}
+
+
+.recived{
+  align-self: start;
+}

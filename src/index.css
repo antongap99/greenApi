@@ -10,7 +10,9 @@
   --bg: #00a884;
   --bg-main: #202c33;
   --bg-inverse: #2A3942;
+  --bg-inverse-hover: #354752;
   --dark: #1d251f;
+  --line: #465f6e;
 }
 
 html {
@@ -22,7 +24,7 @@ html {
   box-sizing: inherit;
 }
 
-ul {
+ul, p, h1 {
   margin: 0;
   padding: 0;
 }
@@ -41,6 +43,7 @@ a:hover {
 body {
   margin: 0;
   height: 100%;
+  position: relative;
 }
 
 h1 {
@@ -59,4 +62,11 @@ button {
   cursor: pointer;
 }
 
+.recived {
+  align-self: flex-start;
+}
 
+
+.active {
+  background-color: var(--bg-inverse-hover);
+}

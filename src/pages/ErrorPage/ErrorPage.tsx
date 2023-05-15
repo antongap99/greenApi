@@ -1,18 +1,6 @@
-import { FC } from 'react';
 import style from './ErrorPage.module.css';
-import { useRouteError } from "react-router-dom";
 
-interface Props {
-  children?: FC;
-}
-
-interface Error {
-  statusText?: string;
-  message?: string;
-  statusCode?: number
-}
-
-export const ErrorPage = (props: Props) => {
+export const ErrorPage = () => {
 
   return (
     <div className={style.error}>

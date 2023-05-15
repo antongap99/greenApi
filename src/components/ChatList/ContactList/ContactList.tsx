@@ -1,15 +1,18 @@
-import { FC } from 'react';
 import style from './ContactList.module.css';
 import { ContactListItem } from './ContactListItem/ContactListItem';
+import { useAppDispatch, useAppSelector } from '../../../redux/redux-hooks/hooks';
+import { contactsActions } from '../../../redux/contactSlice/contactReducer';
 
-interface Props {
-  children?: FC;
-}
 
-export const ContactList = (props:Props) => {
+export const ContactList = () => {
+  const contacts = useAppSelector(state => state.contacts.contacts);
+  const dispatch = useAppDispatch()
+  const onClickHandle = (id:string) => {
+    dispatch(contactsActions.activateContact(id))
+  }
   return (
     <ul className = {style.contactList}>
-      <ContactListItem tel={'+7-(928)-361-47-60'}/>
+      {contacts.map(contact => <ContactListItem key={contact.id} data={contact}  onClickHandle={onClickHandle}/>)}
     </ul>
   );
 };

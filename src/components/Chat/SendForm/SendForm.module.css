@@ -1,0 +1,18 @@
+.wrapper {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.form {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  padding: 20px;
+}
+
+.sendInput {
+  display: block;
+  width: 80%;
+  border-radius: 10px;
+  font-size: 16px;
+}
