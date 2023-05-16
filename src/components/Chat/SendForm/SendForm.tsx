@@ -46,7 +46,7 @@ export const SendForm = () => {
         inputValue: "",
       })
     );
-
+      if(!lastMessageId) return;
     dispatch(
       messageRequestAsync({
         url: `${apiHost}/waInstance${idInstance}/DeleteNotification/${apiToken}/${lastMessageId}`,

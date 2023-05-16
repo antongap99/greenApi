@@ -44,8 +44,8 @@ export const messageRequestAsync =
               })
             );
           }
-
           if(method === 'get'){
+            if (parseInt(data.body?.senderData?.chatId).toString() !== activeNumber) return;
             const recivedMessage = data.body?.messageData?.textMessageData?.textMessage;
             recivedMessage &&  dispatch(
               messagesActions.addMessage({
@@ -55,9 +55,15 @@ export const messageRequestAsync =
                 type: typeMessage,
                 userNumber: activeNumber,
               })
+
             );
             const Id = data.receiptId || ''
+            console.log('Id: ', Id);
             dispatch(messagesActions.addLastMessageId(Id))
+          }
+
+          if(method === 'delete') {
+            dispatch(messagesActions.addLastMessageId(''))
           }
         })
         .catch((err) => {

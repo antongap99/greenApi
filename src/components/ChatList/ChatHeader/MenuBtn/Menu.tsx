@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../../../redux/redux-hooks/hooks";
 import { authActions } from "../../../../redux/authSlice/authReducer";
 import { useNavigate } from "react-router-dom";
 import { contactsActions } from "../../../../redux/contactSlice/contactReducer";
+import { messagesActions } from "../../../../redux/messagesSlice/messagesReducer";
 
 export const Menu = () => {
   const [showLogout, setShowLogout] = useState<boolean>(false);
@@ -19,6 +20,7 @@ export const Menu = () => {
   const logout = () => {
     dispatch(authActions.deleteToken());
     dispatch(contactsActions.deleteAllContacts());
+    dispatch(messagesActions.deleteAllMessages());
     setShowLogout(!showLogout);
     navigate('/')
   }
