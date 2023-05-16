@@ -7,7 +7,8 @@ export interface IAuthAction {
 }
 
 export interface ContactsState {
-  contacts: IContact[];
+  contacts: IContact[]
+  activeNumber: string
 }
 
 export interface authState {
@@ -32,8 +33,18 @@ export interface IActivateAction {
   payload: string;
 }
 
+
+export enum Statuses {
+  Start = "start",
+  Success = "success",
+  Pending = "pending",
+  Rejected = "rejected",
+}
+
 export interface MessagesState {
-  messages: IMessages[];
+  requestStatus: Statuses
+  messages: Record<string, IMessages[]>
+  lastMessageId:string
 }
 
 export interface IMessagesAction {
@@ -43,6 +54,7 @@ export interface IMessagesAction {
 
 export interface IMessages {
   id: string;
+  userNumber: string,
   text: string;
   date: string;
   type: "recived" | "sended";

@@ -9,16 +9,16 @@ interface Props {
     id: string,
     active: boolean
   }
-  onClickHandle: (id:string) => void
+  onClickHandle: (data: {id:string, tel:string}) => void
 }
 
 export const ContactListItem = ({onClickHandle, data}:Props) => {
 
-
+  const userData = {id: data.id, tel: data.tel}
   return (
     <li className={cn(style.contactItem, {
       'active': data.active
-    })} onClick={() => onClickHandle(data.id)}>
+    })} onClick={() => onClickHandle(userData)}>
       <Avatar/>
       <span  className={style.name}>{data.name ? data.name: 'noName'}</span>
       <span className={style.tel}>{data.tel}</span>

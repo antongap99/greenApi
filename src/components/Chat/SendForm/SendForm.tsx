@@ -1,61 +1,64 @@
 import style from './SendForm.module.css';
 import { Button } from '../../Button/Button';
 import { FormEvent } from 'react';
-import { useAppDispatch } from '../../../redux/redux-hooks/hooks';
-import { messagesActions } from '../../../redux/messagesSlice/messagesReducer';
-import uniqid from 'uniqid';
-import { apiHost } from '../../../const/domain';
+import { useAppDispatch, useAppSelector } from '../../../redux/redux-hooks/hooks';
+import { messageRequestAsync } from '../../../redux/messagesSlice/messagesActions';
+import { apiHost } from '../../../const/const';
 
-
-const idInstance = 1101820960;
-const apiToken =  'a86af254e4b344708a9b75e7b4b71164133ea5aebc104a1a8b';
 
 export const SendForm = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  const activeNumber = useAppSelector(state => state.contacts.activeNumber);
+  const lastMessageId = useAppSelector(state => state.messages.lastMessageId)
+  const {idInstance, apiToken} = useAppSelector(state => state.auth);
+
   const onSubmitHandle = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if(!activeNumber) return;
     const target = e.target as HTMLFormElement;
     if(target.input.value === '') return;
-    fetch(`https://api.green-api.com/waInstance${idInstance}/SendMessage/${apiToken}`, {
-      method: 'post',
+    dispatch(messageRequestAsync({
+      url: `${apiHost}/waInstance${idInstance}/SendMessage/${apiToken}`,
+      method: "post",
+      body: {
+        chatId: `${activeNumber}@c.us`,
+        message: target.input.value
+      },
+      inputValue: target.input.value ,
+      activeNumber: activeNumber,
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        "chatId": "79818797351@c.us",
-        "message": target.input.value
-    })
-    }).then((data) => {
-      console.log(data);
-      console.log('отправка');
-    }).catch((err) => {
-      console.log('не получилось');
-    })
-    dispatch(messagesActions.addMessage({
-      id: uniqid(),
-      text: target.input.value,
-      date: new Date().toLocaleTimeString(),
-      type: 'sended'
+      typeMessage: "sended",
     }))
-    console.log(target.input.value);
   }
 
-  const receiveMessage = async () => {
-    try {
-      const data = await fetch(`${apiHost}waInstance${idInstance}/receiveNotification/${apiToken}`);
-      const res = await data.json()
-      console.log('res: ', res);
-    } catch (error) {
-      console.log('error: ', error);
-    }
+  const receiveMessage = () => {
+    if(!activeNumber) return;
+    dispatch(messageRequestAsync({
+      url: `${apiHost}waInstance${idInstance}/receiveNotification/${apiToken}`,
+      method: "get",
+      activeNumber: activeNumber,
+      typeMessage: "recived",
+      inputValue:'',
+    }))
+
+    dispatch(messageRequestAsync({
+      url: `https://api.green-api.com/waInstance${idInstance}/DeleteNotification/${apiToken}/${lastMessageId}`,
+      method: "delete",
+      activeNumber: activeNumber,
+      typeMessage: "recived",
+      inputValue:'',
+    }))
   }
+
 
   return (
     <div className = {style.wrapper}>
       <form className={style.form} onSubmit={onSubmitHandle}>
         <input name='input' className={style.sendInput} type="text" />
-        <Button type='button' text='Обновить'/>
-        <Button type='submit' text='Отправить' handle={receiveMessage}/>
+        <Button type='button' text='Обновить'  handle={receiveMessage}/>
+        <Button type='submit' text='Отправить'/>
       </form>
     </div>
   );

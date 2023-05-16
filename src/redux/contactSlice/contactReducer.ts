@@ -1,22 +1,13 @@
 import { AnyAction, createSlice } from "@reduxjs/toolkit";
-import { ContactsState, IActivateAction, IContactsAction } from "../../Types/interfaces";
-import uniqid from "uniqid";
+import {
+  ContactsState,
+  IActivateAction,
+  IContactsAction,
+} from "../../Types/interfaces";
 
 const initialState: ContactsState = {
-  contacts: [
-    {
-      id: uniqid(),
-      name: "Anton",
-      tel: "79283614760",
-      active: false,
-    },
-    {
-      id: uniqid(),
-      name: "state",
-      tel: "79283734260",
-      active: false,
-    },
-  ],
+  contacts: [],
+  activeNumber: '',
 };
 
 const contactsSlice = createSlice({
@@ -34,6 +25,9 @@ const contactsSlice = createSlice({
         ...contact,
         active: action.payload === contact.id ? true : false,
       }));
+      state.activeNumber = state.contacts.find(
+        (contact) => contact.active === true
+      )?.tel || '';
     },
   },
 });

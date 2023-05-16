@@ -1,10 +1,12 @@
 import {  createSlice } from "@reduxjs/toolkit";
-import {  IMessagesAction, MessagesState } from "../../Types/interfaces";
+import {  IMessagesAction, MessagesState, Statuses } from "../../Types/interfaces";
 
 
 
 const initialState: MessagesState = {
-  messages: [],
+  requestStatus: Statuses.Start,
+  messages: {},
+  lastMessageId: '',
 }
 
 
@@ -12,9 +14,28 @@ const messagesSlice = createSlice({
   name: "messages",
   initialState,
   reducers: {
-    addMessage: (state, action:IMessagesAction) => {
-      state.messages.push(action.payload)
+    requestSendMessagePending: (state) => {
+      state.requestStatus = Statuses.Pending
     },
+    requestSendMessageSuccess: (state) => {
+      state.requestStatus = Statuses.Success
+    },
+    requestSendMessageError: (state) => {
+      state.requestStatus = Statuses.Rejected
+    },
+    addMessage: (state, action:IMessagesAction) => {
+      state.messages[action.payload.userNumber] ?
+        state.messages[action.payload.userNumber].push(action.payload):
+        state.messages[action.payload.userNumber] = []
+    },
+    addMessagesUser: (state, action) => {
+      if(!state.messages[action.payload]){
+        state.messages[action.payload] = []
+      }
+    },
+    addLastMessageId: (state, action) => {
+      state.lastMessageId = action.payload
+    }
   },
 });
 

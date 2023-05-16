@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import './app.css';
 import { LoginPage } from './pages/LoginPage/LoginPage';
@@ -8,8 +8,14 @@ import { useAppSelector } from './redux/redux-hooks/hooks';
 
 
 function App() {
-  const [path, setPath] = useState('/')
+    const navigate = useNavigate();
+    const {apiToken, idInstance} = useAppSelector(state => state.auth);
 
+    useEffect(() => {
+      if(!apiToken || !idInstance) {
+        navigate('/')
+      }
+    }, [navigate, apiToken, idInstance])
   return (
     <>
         <Routes>
