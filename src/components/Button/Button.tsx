@@ -17,11 +17,9 @@ const apiToken =  'a86af254e4b344708a9b75e7b4b71164133ea5aebc104a1a8b';
 
 const receiveMessage = async () => {
   try {
-    console.log(2);
     const data = await fetch(`${apiHost}waInstance${idInstance}/receiveNotification/${apiToken}`);
     const res = await data.json()
     console.log('res: ', res);
-
 
   } catch (error) {
     console.log('error: ', error);
