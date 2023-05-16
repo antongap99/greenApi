@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../redux/redux-hooks/hooks";
 import { authActions } from "../../redux/authSlice/authReducer";
 import { Button } from "../Button/Button";
 import { InputGroup } from "./InputGroup/InputGroup";
-import { InputType } from "../../types/types";
+import { InputType } from "../../Interfaces/types";
 
 export const Login = () => {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import { InputType } from "../../../types/types";
+import { InputType } from "../../../Interfaces/types";
 import style from "./InputGroup.module.css";
 
 

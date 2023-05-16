@@ -1,5 +1,5 @@
 import {  createSlice } from "@reduxjs/toolkit";
-import {  IMessagesAction, MessagesState, Statuses } from "../../Types/interfaces";
+import {  IMessagesAction, MessagesState, Statuses } from "../../Interfaces/interfaces";
 
 
 

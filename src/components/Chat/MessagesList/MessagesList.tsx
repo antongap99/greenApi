@@ -1,4 +1,4 @@
-import { IMessages } from "../../../Types/interfaces";
+import { IMessages } from "../../../Interfaces/interfaces";
 import { useAppSelector } from "../../../redux/redux-hooks/hooks";
 import { Message } from "../Message/Message";
 import style from "./MessagesList.module.css";

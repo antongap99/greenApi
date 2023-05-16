@@ -3,7 +3,7 @@ import {
   ContactsState,
   IActivateAction,
   IContactsAction,
-} from "../../Types/interfaces";
+} from "../../Interfaces/interfaces";
 
 const initialState: ContactsState = {
   contacts: [],

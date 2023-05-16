@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { authState } from "../../Types/interfaces";
+import { authState } from "../../Interfaces/interfaces";
 
 
 
