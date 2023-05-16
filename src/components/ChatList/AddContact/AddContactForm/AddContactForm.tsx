@@ -1,7 +1,7 @@
 import style from './AddContactForm.module.css';
 import { InputGroup } from '../../../login/InputGroup/InputGroup';
 import { Button } from '../../../Button/Button';
-import { InputType } from '../../../../Types/types';
+import { InputType } from '../../../../types/types';
 import { FormEvent } from 'react';
 import { useAppDispatch } from '../../../../redux/redux-hooks/hooks';
 import { contactsActions } from '../../../../redux/contactSlice/contactReducer';

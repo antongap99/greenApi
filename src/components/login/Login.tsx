@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/redux-hooks/hooks";
 import { authActions } from "../../redux/authSlice/reducer";
 import { Button } from "../Button/Button";
 import { InputGroup } from "./InputGroup/InputGroup";
-import { InputType } from "../../Types/types";
+import { InputType } from "../../types/types";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ export const Login = () => {
   return (
     <form className={style.form} onSubmit={(e) => submitHandle(e)}>
       <h1 className={style.title}>Введите учетные данные</h1>
-      <fieldset>
+      <fieldset className={style.fieldset}>
         <InputGroup
           formName="idInstance"
           name="idInstance"

@@ -40,14 +40,22 @@ export const SendForm = () => {
     console.log(target.input.value);
   }
 
-
+  const receiveMessage = async () => {
+    try {
+      const data = await fetch(`${apiHost}waInstance${idInstance}/receiveNotification/${apiToken}`);
+      const res = await data.json()
+      console.log('res: ', res);
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  }
 
   return (
     <div className = {style.wrapper}>
       <form className={style.form} onSubmit={onSubmitHandle}>
         <input name='input' className={style.sendInput} type="text" />
         <Button type='button' text='Обновить'/>
-        <Button type='submit' text='Отправить' />
+        <Button type='submit' text='Отправить' handle={receiveMessage}/>
       </form>
     </div>
   );

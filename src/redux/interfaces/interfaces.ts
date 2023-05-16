@@ -29,8 +29,6 @@ export interface IActivateAction {
   payload: string
 }
 
-
-
 export interface MessagesState {
   messages:  IMessages[],
 }
