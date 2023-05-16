@@ -29,6 +29,10 @@ const contactsSlice = createSlice({
         (contact) => contact.active === true
       )?.tel || '';
     },
+    deleteAllContacts: (state) => {
+      state.contacts = [];
+      state.activeNumber = ''
+    }
   },
 });
 

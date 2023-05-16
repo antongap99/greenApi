@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import './app.css';
@@ -21,29 +21,17 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={
-              <>
-                <LoginPage />
-              </>
-            }
+            element={<LoginPage />}
           >
           </Route>
           <Route
             path='auth'
-            element={
-              <>
-                <MainPage />
-              </>
-            }
+            element={<MainPage />}
           >
           </Route>
           <Route
             path='*'
-            element={
-              <>
-                <ErrorPage/>
-              </>
-            }
+            element={<ErrorPage/>}
           ></Route>
         </Routes>
     </>

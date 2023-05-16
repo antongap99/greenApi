@@ -1,1 +1,1 @@
-export const apiHost = 'https://api.green-api.com/' 
+export const apiHost = 'https://api.green-api.com'

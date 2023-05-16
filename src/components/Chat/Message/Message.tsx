@@ -9,8 +9,8 @@ interface Props {
 export const Message = ({type, text, date}:Props) => {
   return (
     <li className = {cn(style.message, {
-      'recived': type ===  'recived',
-      'sended': type ===  'sended',
+      'recived': type === 'recived',
+      'sended': type === 'sended',
     }) }>
       <p className={style.text}>{text}</p>
       <p className={style.date}>Отправлено в {date}</p>

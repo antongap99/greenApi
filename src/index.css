@@ -68,6 +68,11 @@ button {
 
 .recived {
   align-self: flex-start;
+  border-radius: 10px 10px 10px 0;
+}
+
+.sended {
+  border-radius: 10px 10px 0 10px;
 }
 
 .active {

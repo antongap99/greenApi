@@ -35,6 +35,9 @@ const messagesSlice = createSlice({
     },
     addLastMessageId: (state, action) => {
       state.lastMessageId = action.payload
+    },
+    deleteAllMessages: (state) => {
+      state.messages
     }
   },
 });

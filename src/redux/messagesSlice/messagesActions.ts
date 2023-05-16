@@ -20,11 +20,10 @@ export const messageRequestAsync =
 
     try {
       const options: Record<string, unknown> = {
-        method,
+        method: method,
       };
       if (headers) options.headers = headers;
       if (body) options.body = JSON.stringify(body);
-
       dispatch(messagesActions.requestSendMessagePending());
       fetch(url, options)
         .then((res) => {
@@ -32,18 +31,31 @@ export const messageRequestAsync =
           throw new Error(`error with status ${res.status}`)
         })
         .then((data) => {
-          console.log('data: ', data);
           dispatch(messagesActions.requestSendMessageSuccess());
-          dispatch(
-            messagesActions.addMessage({
-              id: uniqid(),
-              text: method === 'post'? inputValue : data.body?.messageData?.textMessageData?.textMessage,
-              date: new Date().toLocaleTimeString(),
-              type: typeMessage,
-              userNumber: activeNumber,
-            })
-          );
+
+          if(method === 'post'){
+            dispatch(
+              messagesActions.addMessage({
+                id: uniqid(),
+                text: inputValue,
+                date: new Date().toLocaleTimeString(),
+                type: typeMessage,
+                userNumber: activeNumber,
+              })
+            );
+          }
+
           if(method === 'get'){
+            const recivedMessage = data.body?.messageData?.textMessageData?.textMessage;
+            recivedMessage &&  dispatch(
+              messagesActions.addMessage({
+                id: uniqid(),
+                text: recivedMessage,
+                date: new Date().toLocaleTimeString(),
+                type: typeMessage,
+                userNumber: activeNumber,
+              })
+            );
             const Id = data.receiptId || ''
             dispatch(messagesActions.addLastMessageId(Id))
           }
