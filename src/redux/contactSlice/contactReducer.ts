@@ -1,5 +1,5 @@
 import { AnyAction, createSlice } from "@reduxjs/toolkit";
-import { ContactsState, IActivateAction, IContactsAction } from "../interfaces/interfaces";
+import { ContactsState, IActivateAction, IContactsAction } from "../../Types/interfaces";
 import uniqid from "uniqid";
 
 const initialState: ContactsState = {

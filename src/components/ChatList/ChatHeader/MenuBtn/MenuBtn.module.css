@@ -1,5 +1,6 @@
 .menu {
   height: 40px;
+  position: relative;
   background: transparent;
   display: flex;
   flex-direction: column;

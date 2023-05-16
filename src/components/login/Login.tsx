@@ -1,8 +1,8 @@
 import { FormEvent } from "react";
 import style from "./login.module.css";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../redux/redux-hooks/hooks";
-import { authActions } from "../../redux/authSlice/reducer";
+import { useAppDispatch } from "../../redux/redux-hooks/hooks";
+import { authActions } from "../../redux/authSlice/authReducer";
 import { Button } from "../Button/Button";
 import { InputGroup } from "./InputGroup/InputGroup";
 import { InputType } from "../../types/types";
@@ -10,18 +10,20 @@ import { InputType } from "../../types/types";
 export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const access = useAppSelector((state) => state.auth.access);
 
   const submitHandle = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as HTMLFormElement;
     const data = {
       idInstance: target.idInstance.value,
-      apiTokenInstance: target.idInstance.value,
+      apiToken: target.apiTokenInstance.value,
     };
 
-    if (data.apiTokenInstance && data.idInstance) {
-      dispatch(authActions.auth_success());
+    if (data.apiToken && data.idInstance) {
+      dispatch(authActions.setTokens({
+        idInstance: data.idInstance,
+        apiToken: data.apiToken,
+      }));
       navigate("/auth");
     }
   };
